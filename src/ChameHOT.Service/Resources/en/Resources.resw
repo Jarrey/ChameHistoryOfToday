@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About Application</value>
+  </data>
+  <data name="AboutButton.Content" xml:space="preserve">
+    <value> About</value>
+  </data>
+  <data name="AboutContent" xml:space="preserve">
+    <value>&lt;StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"&gt;
+    &lt;StackPanel.Resources&gt;
+        &lt;Style TargetType="TextBlock"&gt;
+            &lt;Setter Property="Margin" Value="0,8,0,8"/&gt;
+            &lt;Setter Property="TextWrapping" Value="Wrap"/&gt;
+        &lt;/Style&gt;
+    &lt;/StackPanel.Resources&gt;
+    &lt;Grid&gt;
+        &lt;Grid.ColumnDefinitions&gt;
+            &lt;ColumnDefinition Width="auto"/&gt;
+            &lt;ColumnDefinition Width="*"/&gt;
+        &lt;/Grid.ColumnDefinitions&gt;                
+        &lt;Image Source="ms-appx:///ChameHOT_Service/UI/Assets/Logo.png" Margin="4,0,4,0"/&gt;
+        &lt;TextBlock Grid.Column="1" FontWeight="Bold" FontSize="20" VerticalAlignment="Center"&gt;Chameleon - On This Day&lt;/TextBlock&gt;
+    &lt;/Grid&gt;
+    &lt;TextBlock&gt;Chameleon - On This Day is a lock screen application, one application of Chameleon series. Which can show history events on this day in your Windows 8 LockScreen. Meanwhile, this application can automatically synchronize WikiPedia On This Day data and show them in your lock screen. Please click "Start" in application and you will see "On This Day" show in your device automatically.&lt;/TextBlock&gt;
+    &lt;TextBlock&gt;This application is FREE, please send me any feedback and suggestion via jar.bob@gmail, I will develop and publish more new Chameleon series applications in future.&lt;/TextBlock&gt;
+    &lt;TextBlock FontWeight="Bold"&gt;Chameleon Series:&lt;/TextBlock&gt;
+    &lt;Grid&gt;
+        &lt;Grid.ColumnDefinitions&gt;
+            &lt;ColumnDefinition Width="auto"/&gt;
+            &lt;ColumnDefinition Width="*"/&gt;
+        &lt;/Grid.ColumnDefinitions&gt;                
+        &lt;Image Source="ms-appx:///ChameHOT_Service/UI/Assets/ChameleonLogo.png"/&gt;
+        &lt;HyperlinkButton Grid.Column="1" Content="Download Chameleon" VerticalAlignment="Center" NavigateUri="http://apps.microsoft.com/windows/en-us/app/chameleon/fa822ed6-c51d-4e3a-a2de-db7adf81eef0"/&gt;
+    &lt;/Grid&gt;
+    &lt;TextBlock&gt;&lt;/TextBlock&gt;
+    &lt;TextBlock FontWeight="Bold"&gt;Privacy Policy&lt;/TextBlock&gt;
+    &lt;TextBlock&gt;Chameleon - On This Day does not collect, store or release any of your personal information or information related to your devices. Chameleon - On This Day does not collect any statistical or analytical data, but also does not track user behavior.&lt;/TextBlock&gt;
+    &lt;TextBlock&gt;Any needs of changing the privacy policy of Chameleon - On This Day, the author will update the changes at settings page, so that you will always know what information this application collects. Should you have any questions or concerns towards this privacy policy, please contact the author via jar.bob@gmail.com.&lt;/TextBlock&gt;
+&lt;/StackPanel&gt;</value>
+  </data>
+  <data name="AboutTitle" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AppearanceButton.Content" xml:space="preserve">
+    <value> Appearance</value>
+  </data>
+  <data name="BackgroundSettingText.Text" xml:space="preserve">
+    <value>Background</value>
+  </data>
+  <data name="BackgroundToggle.OffContent" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="BackgroundToggle.OnContent" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="BT12H" xml:space="preserve">
+    <value>12 hours</value>
+  </data>
+  <data name="BT15M" xml:space="preserve">
+    <value>15 mins</value>
+  </data>
+  <data name="BT1D" xml:space="preserve">
+    <value>1 day</value>
+  </data>
+  <data name="BT1H" xml:space="preserve">
+    <value>1 hour</value>
+  </data>
+  <data name="BT2H" xml:space="preserve">
+    <value>2 hours</value>
+  </data>
+  <data name="BT30M" xml:space="preserve">
+    <value>30 mins</value>
+  </data>
+  <data name="BT3H" xml:space="preserve">
+    <value>3 hours</value>
+  </data>
+  <data name="BT45M" xml:space="preserve">
+    <value>45 mins</value>
+  </data>
+  <data name="ClosePopupButton.Content" xml:space="preserve">
+    <value> Close</value>
+  </data>
+  <data name="CopyrightContent" xml:space="preserve">
+    <value>Copyright by WikiPedia.org</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="HelpButton.Content" xml:space="preserve">
+    <value> Help</value>
+  </data>
+  <data name="HelpPageUrl" xml:space="preserve">
+    <value>http://chameleonapp.azurewebsites.net/ChameHOT/ChameHOT_en.html</value>
+  </data>
+  <data name="Later" xml:space="preserve">
+    <value>Later</value>
+  </data>
+  <data name="MoreButton.Content" xml:space="preserve">
+    <value> See More</value>
+  </data>
+  <data name="Never" xml:space="preserve">
+    <value>No, thanks</value>
+  </data>
+  <data name="OKPopupButton.Content" xml:space="preserve">
+    <value> OK</value>
+  </data>
+  <data name="OnThisDay" xml:space="preserve">
+    <value>On This Day</value>
+  </data>
+  <data name="PageLogo.Source" xml:space="preserve">
+    <value>ms-appx:///ChameHOT_Service/UI/Assets/Main_en.png</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="Rate" xml:space="preserve">
+    <value>Rate it</value>
+  </data>
+  <data name="ReloadButon.Content" xml:space="preserve">
+    <value> Reload</value>
+  </data>
+  <data name="ReviewPromptContent" xml:space="preserve">
+    <value>Do you like this app, please give us a note?</value>
+  </data>
+  <data name="ReviewPromptTitle" xml:space="preserve">
+    <value>Do you like this app?</value>
+  </data>
+  <data name="SetBackgroundTaskSucessfully" xml:space="preserve">
+    <value>Set background task sucessfully, app will update your system lock screen background</value>
+  </data>
+  <data name="SetLKButton.Content" xml:space="preserve">
+    <value> Set LockScreen</value>
+  </data>
+  <data name="SetLockScreenError" xml:space="preserve">
+    <value>Set lock screen error</value>
+  </data>
+  <data name="SetLockScreenSucessfully" xml:space="preserve">
+    <value>Set image as current lock screen background sucessfully</value>
+  </data>
+  <data name="StartButton.Content" xml:space="preserve">
+    <value> Start</value>
+  </data>
+  <data name="StopButton.Content" xml:space="preserve">
+    <value> Stop</value>
+  </data>
+  <data name="TimeIntervalText.Text" xml:space="preserve">
+    <value>Time Interval</value>
+  </data>
+  <data name="UnregisterBackgroundTaskSucessfully" xml:space="preserve">
+    <value>Unregister background task sucessfully</value>
+  </data>
+</root>

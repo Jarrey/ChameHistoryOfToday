@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<App>
+  <ServiceChannels>
+    <ServiceChannel Name="ChameHOTServiceChannel"
+                    ID="B90BE798-8A61-446E-AB0B-E57D4569CAC1"
+                    Type="ChameHOT_Service, Culture=''|ChameHOT_Service.ChameHOTServiceChannel"
+                    ShortName="CHOTSC"
+                    IsEnabled="true"
+                    VariableSizedWrapGridStyleKey="22">
+
+      <!-- ChameHOT service in local debug: http://localhost:21765/
+           Remote service: http://chame.azurewebsites.net/ -->
+      <Service Type="ChameHOT_Service, Culture=''|ChameHOT_Service.ChameHOTQueryService"
+               ID="799BBBE6-0C61-40DA-94FF-165470D1D80A"
+               Name="ChameHOTQueryService"
+               ShortName="CHOTQS"
+               ServiceApiUri="http://{0}.wikipedia.org/w/api.php?action=featuredfeed&amp;feed=onthisday&amp;feedformat=atom"
+               ServiceApiParameters="ChameHOT_Service, Culture=''|ChameHOT_Service.ChameHOTApiParameter"
+               ServiceType="0"
+               Regions="en,zh,de"
+               ChameServiceUrl="http://chame.azurewebsites.net/api/GetChameImage?s=ChameHOT.Service"
+               IsSupportBackgroundTask="True"
+               BackgroundTaskService="ChameHOT_Service, Culture=''|ChameHOT_Service.ChameHOTBackgroundTaskService">
+        <BackgroundTaskService EntryPoint="ChameHOT.BackgroundTask.UpdateLockScreenBackgroundTask"
+                               Name="UpdateChameHOT_LSBackgroundTask"
+                               TimeTriggerTimes="BT15M:15|BT30M:30|BT45M:45|BT1H:60|BT2H:120|BT3H:180|BT12H:720|BT1D:1440"/>
+      </Service>
+
+      <!-- Update tile background task supported service -->
+      <Service Type="ChameHOT_Service, Culture=''|ChameHOT_Service.ChameHOTQueryService"
+         ID="B3F0DA47-F4B8-49EA-974E-91955FDC8E06"
+         Name="ChameHOTQueryServiceUpdateTile"
+         ShortName="CHOTQSUT"
+         ServiceApiUri="http://{0}.wikipedia.org/w/api.php?action=featuredfeed&amp;feed=onthisday&amp;feedformat=atom"
+         ServiceApiParameters="ChameHOT_Service, Culture=''|ChameHOT_Service.ChameHOTApiParameter"
+         ServiceType="0"
+         Regions="en,zh,de"
+         IsSupportBackgroundTask="True"
+         BackgroundTaskService="ChameHOT_Service, Culture=''|ChameHOT_Service.ChameHOTUpdateTileBackgroundTaskService">
+        <BackgroundTaskService EntryPoint="ChameHOT.BackgroundTask.UpdateTileBackgroundTask"
+                               Name="UpdateChameHOT_TileBackgroundTask"
+                               TimeTriggerTimes="BT3H:180"/>
+      </Service>
+      
+    </ServiceChannel>
+  </ServiceChannels>
+</App>

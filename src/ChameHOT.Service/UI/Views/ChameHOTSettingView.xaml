@@ -1,0 +1,222 @@
+﻿<common:LayoutAwarePage
+    x:Name="pageRoot"
+    x:Class="ChameHOT_Service.UI.Views.ChameHOTSettingView"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ChameNews.UI"
+    xmlns:common="using:NoteOne_Core.UI.Common"
+    xmlns:i="using:NoteOne_Core.Interaction"
+    xmlns:b="using:NoteOne_Core.Behaviours"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    NavigationCacheMode="Disabled">
+
+    <Page.Resources>
+        <common:ViewModelExtension x:Name="viewModel" Instance="{Binding}" />
+    </Page.Resources>
+
+    <Grid Style="{StaticResource LayoutRootStyle}">
+        <Image x:Name="lockscreen_image" Source="{Binding PreviewImage}" Stretch="UniformToFill"
+               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <Canvas x:Name="edit_panel" Background="Transparent">
+            <i:Interaction.Triggers>
+                <i:TriggerCollection>
+                    <i:EventTrigger EventName="PointerMoved">
+                        <b:CommandBehaviour CommandPropertyPath="PointerMovedCommand" />
+                    </i:EventTrigger>
+                </i:TriggerCollection>
+            </i:Interaction.Triggers>
+
+            <Border Canvas.Left="{Binding Settings.POSITION_LEFT}" Canvas.Top="{Binding Settings.POSITION_TOP}" Padding="5" Width="400">
+                <Grid>
+                    <Rectangle x:Name="bg" Margin="-5" Fill="{Binding Settings.BACKCOLOR}"
+                               Visibility="{Binding Settings.BACKCOLOR_ON, Converter={StaticResource booleanToVisibilityConverter}}"/>
+                    <Rectangle x:Name="content_border" Margin="-5" Fill="#44222222"
+                               Visibility="{Binding IsEditing, Converter={StaticResource booleanToVisibilityConverter}}"/>
+                    <!-- Content panel -->
+                    <StackPanel Margin="4">
+                        <TextBlock Text="{Binding HistoryOnToday.Title}" Foreground="White" FontSize="30" FontWeight="Bold" FontFamily="Segoe UI"/>
+                        <TextBlock Text="{Binding HistoryOnToday.Summary}" FontSize="24" FontWeight="Light"
+                                   Foreground="White" TextWrapping="Wrap" FontFamily="Segoe UI"/>
+                        <Grid Background="White" Height="2" Margin="4"/>
+                        <ItemsControl ItemsSource="{Binding HistoryOnToday.Items}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="White" FontSize="16" TextWrapping="Wrap" FontFamily="Segoe UI">
+                                        <TextBlock.Inlines>
+                                            <Run Text=" "/>
+                                            <Run Text="{Binding Year}"/>
+                                            <Run Text=" "/>
+                                            <Run Text="{Binding Event}"/>
+                                        </TextBlock.Inlines>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <TextBlock Text="{Binding HistoryOnToday.Copyright}" FontSize="10"
+                                   Foreground="White" TextWrapping="Wrap" FontFamily="Segoe UI" HorizontalAlignment="Right"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Drag handler -->
+            <Grid Canvas.Left="{Binding Settings.POSITION_LEFT}" Canvas.Top="{Binding Settings.POSITION_TOP}" Margin="-25,-25,0,0">
+                <i:Interaction.Triggers>
+                    <i:TriggerCollection>
+                        <i:EventTrigger EventName="PointerPressed">
+                            <b:CommandBehaviour CommandPropertyPath="PointerPressedCommand" />
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="PointerReleased">
+                            <b:CommandBehaviour CommandPropertyPath="PointerReleasedCommand" />
+                        </i:EventTrigger>
+                    </i:TriggerCollection>
+                </i:Interaction.Triggers>
+
+                <Ellipse Width="40" Height="40" Fill="#Fffdfdfd" Stroke="Gray" StrokeThickness="1"/>
+                <TextBlock Text="&#x270b;" FontFamily="Segoe UI Symbol" Foreground="Black" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Canvas>
+
+        <TextBlock Text="{Binding TimeNow}" FontFamily="Segoe UI" FontSize="150" FontWeight="ExtraLight" 
+                   Margin="80,0,0,180" IsHitTestVisible="False"
+                   HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <TextBlock Text="{Binding DateToday}" FontFamily="Segoe UI" FontSize="65" FontWeight="ExtraLight" 
+                   Margin="80,0,0,130" IsHitTestVisible="False"
+                   HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+
+        <!-- Setting layout -->
+        <Grid HorizontalAlignment="{Binding ShowInLeft, Converter={StaticResource booleanToAlignmentConverter}, ConverterParameter=H}" 
+              Width="350" Background="#CC000000">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1">
+                <Image x:Uid="PageLogo" Source="ms-appx:///ChameHOT_Service/UI/Assets/Main_en.png" HorizontalAlignment="Left"/>
+            </Grid>
+
+            <Grid Grid.Row="2" VerticalAlignment="Bottom">
+                <ScrollViewer Padding="10,10,10,10" VerticalScrollMode="Auto"
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollMode="Disabled" ZoomMode="Disabled">
+                    <StackPanel>
+                        <Button x:Uid="ReloadButon" Content="&#xe117; Reload" FontSize="32" FontFamily="Segoe UI Symbol" Margin="5"
+                                Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}"
+                                Style="{StaticResource TextButtonStyle}"
+                                Command="{Binding LoadHotCommand}"/>
+                        <Button x:Uid="MoreButton" Content="&#xe1d3; See More" FontSize="32" FontFamily="Segoe UI Symbol" Margin="5"
+                                Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}"
+                                Style="{StaticResource TextButtonStyle}"
+                                Command="{Binding SeeMoreCommand}"/>
+                        <Button x:Uid="AppearanceButton" Content="&#xe2b1; Appearance" FontSize="32" FontFamily="Segoe UI Symbol" Margin="5"
+                                Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}"
+                                Style="{StaticResource TextButtonStyle}"
+                                Command="{Binding ShowAppearanceCommand}" CommandParameter="{Binding ElementName=AppearancePopup, Mode=OneTime}"/>
+                        <Button x:Uid="SetLKButton" Content="&#xe17c; Set LockScreen" FontSize="32" FontFamily="Segoe UI Symbol" Margin="5"
+                                Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}"
+                                Style="{StaticResource TextButtonStyle}"
+                                Command="{Binding SetLockScreenCommand}"/>
+                        <Button x:Uid="StartButton" Content="&#xe102; Start" FontSize="32" FontFamily="Segoe UI Symbol" Margin="5"
+                                Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}"
+                                Style="{StaticResource TextButtonStyle}"
+                                Command="{Binding ShowBackgroundTaskPopupCommand}" CommandParameter="{Binding ElementName=BackgroundTaskPopup, Mode=OneTime}"/>
+                        <Button x:Uid="StopButton" Content="&#xe15b; Stop" FontSize="32" FontFamily="Segoe UI Symbol" Margin="5"
+                                Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}"
+                                Style="{StaticResource TextButtonStyle}"
+                                Command="{Binding UnregisterBackgroundTaskCommand}"/>
+                        <Button x:Uid="HelpButton" Content="&#xe11b; Help" FontSize="32" FontFamily="Segoe UI Symbol" Margin="5"
+                                Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}"
+                                Style="{StaticResource TextButtonStyle}"
+                                Command="{Binding ShowHelpCommand}"/>
+                        <Button x:Uid="AboutButton" Content="&#xe2c0; About" FontSize="32" FontFamily="Segoe UI Symbol" Margin="5"
+                                Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}"
+                                Style="{StaticResource TextButtonStyle}"
+                                Command="{Binding ShowInfoCommand}"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+
+        <!-- Popup for appearance -->
+        <Popup x:Name="AppearancePopup" IsOpen="{Binding IsAppearanceShown}" IsLightDismissEnabled="True"
+               Width="350" HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalOffset="-340">
+            <Popup.ChildTransitions>
+                <TransitionCollection>
+                    <PopupThemeTransition/>
+                </TransitionCollection>
+            </Popup.ChildTransitions>
+            <Grid Width="350" x:Name="RootPopupBorder">
+                <StackPanel Orientation="Vertical" x:Name="pop" Margin="10" Background="#ffeeeeee">
+                    <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
+                        <TextBlock x:Uid="BackgroundSettingText" Text="Background" Foreground="Black" FontSize="20" FontFamily="Segoe UI" Margin="5" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <ToggleSwitch x:Uid="BackgroundToggle" Foreground="Black" OnContent="Show" OffContent="Hide" VerticalAlignment="Center" FontSize="20" FontFamily="Segoe UI" FontWeight="Bold" 
+                                      IsOn="{Binding Settings.BACKCOLOR_ON, Mode=TwoWay}">
+                            <i:Interaction.Triggers>
+                                <i:TriggerCollection>
+                                    <i:EventTrigger EventName="Toggled">
+                                        <b:CommandBehaviour CommandPropertyPath="SaveSettingsCommand" />
+                                    </i:EventTrigger>
+                                </i:TriggerCollection>
+                            </i:Interaction.Triggers>
+                        </ToggleSwitch>
+                    </StackPanel>
+                </StackPanel>
+                <Path Fill="#ffeeeeee" HorizontalAlignment="Right" VerticalAlignment="Center" Data="M0,0L10,20 0,40 Z" Margin="0"
+                      Visibility="{Binding ShowInLeft, Converter={StaticResource booleanToVisibilityConverter}, ConverterParameter=NEG}"/>
+                <Path Fill="#ffeeeeee" HorizontalAlignment="Left" VerticalAlignment="Center" Data="M10,0L0,20 10,40 Z" Margin="0"
+                      Visibility="{Binding ShowInLeft, Converter={StaticResource booleanToVisibilityConverter}}"/>
+            </Grid>
+        </Popup>
+
+        <!-- Popup for background -->
+        <Popup x:Name="BackgroundTaskPopup" IsOpen="{Binding IsBackgroundPopupShown}" IsLightDismissEnabled="True"
+               Width="350" HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalOffset="-245">
+            <Popup.ChildTransitions>
+                <TransitionCollection>
+                    <PopupThemeTransition/>
+                </TransitionCollection>
+            </Popup.ChildTransitions>
+            <Grid Width="350">
+                <StackPanel Orientation="Vertical" Margin="10" Background="#ffeeeeee">
+                    <Grid Margin="10,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Uid="TimeIntervalText" Text="Time Interval" Foreground="Black" FontSize="20" FontFamily="Segoe UI" Margin="5" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <ComboBox Grid.Column="1" Margin="5"
+                                  ItemsSource="{Binding BackgroundTaskTimeTiggerTimes}"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Value"
+                                  SelectedValue="{Binding BackgroundTaskTimeTiggerTime, Mode=TwoWay}"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Border Background="#ff222222" Margin="5" Padding="2" BorderThickness="2" BorderBrush="White">
+                            <Button x:Uid="OKPopupButton" Content="&#xe10b; OK" FontSize="18" FontFamily="Segoe UI Symbol" HorizontalAlignment="Center" 
+                                    Style="{StaticResource TextBlockButtonStyle}"
+                                    Command="{Binding RegisterBackgroundTaskCommand}"/>
+                        </Border>
+                        <Border Grid.Column="1" Background="#ff222222" Margin="5" Padding="2" BorderThickness="2" BorderBrush="White">
+                            <Button x:Uid="ClosePopupButton" Content="&#xe10a; Close" FontSize="18" FontFamily="Segoe UI Symbol" HorizontalAlignment="Center" 
+                                    Style="{StaticResource TextBlockButtonStyle}"
+                                    Command="{Binding ClosePopupCommand}"/>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+                <Path Fill="#ffeeeeee" HorizontalAlignment="Right" VerticalAlignment="Center" Data="M0,0L10,20 0,40 Z" Margin="0"
+                      Visibility="{Binding ShowInLeft, Converter={StaticResource booleanToVisibilityConverter}, ConverterParameter=NEG}"/>
+                <Path Fill="#ffeeeeee" HorizontalAlignment="Left" VerticalAlignment="Center" Data="M10,0L0,20 10,40 Z" Margin="0"
+                      Visibility="{Binding ShowInLeft, Converter={StaticResource booleanToVisibilityConverter}}"/>
+            </Grid>
+        </Popup>
+    </Grid>
+</common:LayoutAwarePage>
