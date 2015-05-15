@@ -34,7 +34,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChameHOT.WebService.Library
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chame.WebService.Helper", "..\..\ChameWebService\src\Chame.WebService.Helper\Chame.WebService.Helper.csproj", "{C5AFA1EC-54E4-4ADC-80BB-65EE055CDAF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChameWeather.WebService.Library", "..\..\ChameWeather\dev\ChameWeather.WebService.Library\ChameWeather.WebService.Library.csproj", "{9C1CF0A0-9152-4422-AF4F-B4612D28F7C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChameWeather.WebService.Library", "..\..\ChameWeather\src\ChameWeather.WebService.Library\ChameWeather.WebService.Library.csproj", "{9C1CF0A0-9152-4422-AF4F-B4612D28F7C4}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
