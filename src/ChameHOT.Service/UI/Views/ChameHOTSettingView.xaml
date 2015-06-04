@@ -19,7 +19,7 @@
 
     <Grid Style="{StaticResource LayoutRootStyle}">
         <Image x:Name="lockscreen_image" Source="{Binding PreviewImage}" Stretch="UniformToFill"
-               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+               HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <Canvas x:Name="edit_panel" Background="Transparent">
             <i:Interaction.Triggers>
@@ -86,7 +86,7 @@
         <TextBlock Text="{Binding DateToday}" FontFamily="Segoe UI" FontSize="65" FontWeight="ExtraLight" 
                    Margin="80,0,0,130" IsHitTestVisible="False"
                    HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-
+                
         <!-- Setting layout -->
         <Grid HorizontalAlignment="{Binding ShowInLeft, Converter={StaticResource booleanToAlignmentConverter}, ConverterParameter=H}" 
               Width="350" Background="#CC000000">

@@ -1,20 +1,16 @@
-﻿using NoteOne_Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Data.Xml.Dom;
+﻿using ChameHOT_Service.Models;
+using Newtonsoft.Json;
+using NoteOne_Core;
 using NoteOne_Utility.Converters;
 using NoteOne_Utility.Extensions;
-using Windows.Foundation;
+using NoteOne_Utility.Helpers;
+using System;
 using System.Runtime.InteropServices.WindowsRuntime;
-using ChameHOT_Service.Models;
-using Windows.System.UserProfile;
+using Windows.Data.Xml.Dom;
+using Windows.Foundation;
 using Windows.Globalization;
 using Windows.Storage;
-using Newtonsoft.Json;
-using NoteOne_Utility.Helpers;
+using Windows.System.UserProfile;
 
 namespace ChameHOT_Service
 {
@@ -105,7 +101,21 @@ namespace ChameHOT_Service
 
                     HistoryOnToday hot = null;
                     InitializeParameters(new object[] { CurrentRegion });
+
+#if DEBUG
+                    string data = string.Empty;
+                    var localDebugData = @"LocalDebugData.xml";
+                    var serviceFolder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("ChameHOT_Service");
+                    if (await serviceFolder.CheckFileExisted(localDebugData))
+                    {
+                        data = await FileIO.ReadTextAsync(await serviceFolder.GetFileAsync(localDebugData));
+                    }
+
+                    object queryResult = data;
+#else
                     object queryResult = await QueryDataAsyncInternal();
+#endif
+
                     if (null != queryResult)
                         hot = (new ChameHOTQueryResult(queryResult, CurrentRegion)).Result as HistoryOnToday;
 

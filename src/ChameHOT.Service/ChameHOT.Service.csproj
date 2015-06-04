@@ -109,6 +109,9 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <Content Include="Config.mf" />
+    <Content Include="LocalDebugData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="UI\Assets\ChameleonLogo.png" />
     <Content Include="UI\Assets\Logo.png" />
     <Content Include="UI\Assets\Main_en.png" />
